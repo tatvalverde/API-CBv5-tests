@@ -1,0 +1,20 @@
+{
+  "name": "api-cbv5-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TatianaNaumova5/API-CBv5-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TatianaNaumova5/API-CBv5-tests/issues"
+  },
+  "homepage": "https://github.com/TatianaNaumova5/API-CBv5-tests#readme"
+}
