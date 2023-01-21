@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/TatianaNaumova5/API-CBv5-tests/issues"
   },
-  "homepage": "https://github.com/TatianaNaumova5/API-CBv5-tests#readme"
+  "homepage": "https://github.com/TatianaNaumova5/API-CBv5-tests#readme",
+  "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
+  }
 }
