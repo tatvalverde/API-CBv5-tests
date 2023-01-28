@@ -5,6 +5,7 @@ describe('example', () =>{
     expect(5+5).to.eq(10)
   })
 })
+
 describe('Operations with numbers', function () {
   const a = 5
   const b = 7
@@ -16,6 +17,7 @@ describe('Operations with numbers', function () {
     expect(a - b).to.eq(-2)
   })
 })
+
 
 describe('Operation with numbers', function () {
   const a = 8
