@@ -18,5 +18,9 @@ describe('Create a user with valid credentials', ()=> {
     it('Status code is 201', async () => {
       expect(res.statusCode).to.eq(201)
     })
+
+    it('Response success property is true', async () => {
+      expect(res.body.success).to.eq(true)
+    })
   })
 })
