@@ -88,3 +88,19 @@ describe('Clients tests', () => {
       expect(res.body.payload.items[0]._id).to.eq(clientId)
     })
   })
+  describe('Update client', () => {
+    let res
+    let clientId
+
+    before(async () => {
+      clientId = (await clientHelper.createClient()).body.payload
+      res = await clientHelper.updateClient(clientId)
+    })
+
+    it('check the response status', () => {
+      expect(res.statusCode).to.eq(200)
+    })
+    it('check the response message', () => {
+      expect(res.statusCode).to.eq(200)
+    })
+  })
