@@ -45,3 +45,22 @@ describe('Clients tests', () => {
       }
     })
   })
+  describe('Get client by ID', () => {
+    let res
+    let clientId
+
+    before(async () => {
+      clientId = (await clientHelper.createClient()).body.payload
+      res = await clientHelper.getSingle(clientId)
+    })
+
+    it('check the response status', () => {
+      expect(res.statusCode).to.eq(200)
+    })
+    it('check the response message', () => {
+      expect(res.body.message).to.eq('Get Client by id ok')
+    })
+    it('check the response message', () => {
+      expect(res.body.payload._id).to.eq(`${clientId}`)
+    })
+  })
