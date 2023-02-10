@@ -136,3 +136,29 @@ describe('Clients tests', () => {
       expect(res.body.message).to.eq('Client deleted')
     })
   })
+  describe('Check if client actually deleted', () => {
+    let res
+    let clientId
+
+    before(async () => {
+      clientId = (await clientHelper.createClient()).body.payload
+      await clientHelper.deleteClient(clientId)
+      res = await clientHelper.getSingle(clientId)
+    })
+
+    it('check the response status', () => {
+      expect(res.statusCode).to.eq(404)
+    })
+    it('check the response message', () => {
+      expect(res.body.message).to.eq('No client for provided id')
+    })
+  })
+})
+
+after('delete all clients', async () => {
+  let clientsList
+  clientsList = (await clientHelper.getAll()).body.payload.items
+  for (let i = 0; i < clientsList.length; i++) {
+    await clientHelper.deleteClient(clientsList[i]._id)
+  }
+})
