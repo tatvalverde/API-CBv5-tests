@@ -104,3 +104,19 @@ describe('Clients tests', () => {
       expect(res.statusCode).to.eq(200)
     })
   })
+  describe('Check if the name actually updated', () => {
+    let clientId
+    let nameBefore
+    let nameAfter
+
+    before(async () => {
+      clientId = (await clientHelper.createClient()).body.payload
+      nameBefore = (await clientHelper.getSingle(clientId)).body.payload.name
+      await clientHelper.updateClient(clientId)
+      nameAfter = (await clientHelper.getSingle(clientId)).body.payload.name
+    })
+
+    it('check if updated name does not equal original name', () => {
+      expect(nameAfter).to.not.eq(nameBefore)
+    })
+  })
