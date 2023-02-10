@@ -64,3 +64,27 @@ describe('Clients tests', () => {
       expect(res.body.payload._id).to.eq(`${clientId}`)
     })
   })
+  describe('Get client by name', () => {
+    let clientId
+    let clientName
+    let res
+
+    before(async () => {
+      clientId = (await clientHelper.createClient()).body.payload
+      clientName = (await clientHelper.getSingle(clientId)).body.payload.name
+      res = await clientHelper.getByName(clientName)
+    })
+
+    it('check the response status', () => {
+      expect(res.statusCode).to.eq(200)
+    })
+    it('check the response message', () => {
+      expect(res.body.message).to.eq('ClientSearch ok')
+    })
+    it('check the client name', () => {
+      expect(res.body.payload.items[0].name).to.eq(clientName)
+    })
+    it('check the client id', () => {
+      expect(res.body.payload.items[0]._id).to.eq(clientId)
+    })
+  })
