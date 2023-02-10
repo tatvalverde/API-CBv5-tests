@@ -23,3 +23,25 @@ describe('Clients tests', () => {
       expect(res.body.payload).to.be.a('string')
     })
   })
+
+  describe('Get all clients', () => {
+    let res
+
+    before(async () => {
+      await clientHelper.createClient()
+      res = await clientHelper.getAll()
+    })
+
+    it('check the response status', () => {
+      expect(res.statusCode).to.eq(200)
+    })
+    it('check the response contains array', () => {
+      expect(res.body.payload.items).to.be.a('array')
+    })
+    it('check the array elements has id', () => {
+      let clientsList = res.body.payload.items
+      for (let i = 0; i < clientsList.length; i++) {
+        expect(clientsList[i]).has.property('_id')
+      }
+    })
+  })
