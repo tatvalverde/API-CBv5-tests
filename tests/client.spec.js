@@ -120,3 +120,19 @@ describe('Clients tests', () => {
       expect(nameAfter).to.not.eq(nameBefore)
     })
   })
+  describe('Delete the client', () => {
+    let res
+    let clientId
+
+    before(async () => {
+      clientId = (await clientHelper.createClient()).body.payload
+      res = await clientHelper.deleteClient(clientId)
+    })
+
+    it('check the response status', () => {
+      expect(res.statusCode).to.eq(200)
+    })
+    it('check the response message', () => {
+      expect(res.body.message).to.eq('Client deleted')
+    })
+  })
