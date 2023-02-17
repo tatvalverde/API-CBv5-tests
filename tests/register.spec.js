@@ -23,6 +23,7 @@ describe('Create a user with valid credentials', ()=> {
       expect(res.body.success).to.eq(true)
     })
   })
+
   describe('Creation a user with invalid credentials', () => {
     describe('Create a user without password', () => {
       let res
