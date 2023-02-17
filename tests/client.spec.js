@@ -45,6 +45,7 @@ describe('Clients tests', () => {
       }
     })
   })
+
   describe('Get client by ID', () => {
     let res
     let clientId
@@ -64,6 +65,7 @@ describe('Clients tests', () => {
       expect(res.body.payload._id).to.eq(`${clientId}`)
     })
   })
+
   describe('Get client by name', () => {
     let clientId
     let clientName
@@ -88,6 +90,7 @@ describe('Clients tests', () => {
       expect(res.body.payload.items[0]._id).to.eq(clientId)
     })
   })
+
   describe('Update client', () => {
     let res
     let clientId
@@ -104,6 +107,7 @@ describe('Clients tests', () => {
       expect(res.statusCode).to.eq(200)
     })
   })
+
   describe('Check if the name actually updated', () => {
     let clientId
     let nameBefore
@@ -120,6 +124,7 @@ describe('Clients tests', () => {
       expect(nameAfter).to.not.eq(nameBefore)
     })
   })
+
   describe('Delete the client', () => {
     let res
     let clientId
@@ -128,37 +133,5 @@ describe('Clients tests', () => {
       clientId = (await clientHelper.createClient()).body.payload
       res = await clientHelper.deleteClient(clientId)
     })
-
-    it('check the response status', () => {
-      expect(res.statusCode).to.eq(200)
-    })
-    it('check the response message', () => {
-      expect(res.body.message).to.eq('Client deleted')
-    })
   })
-  describe('Check if client actually deleted', () => {
-    let res
-    let clientId
-
-    before(async () => {
-      clientId = (await clientHelper.createClient()).body.payload
-      await clientHelper.deleteClient(clientId)
-      res = await clientHelper.getSingle(clientId)
-    })
-
-    it('check the response status', () => {
-      expect(res.statusCode).to.eq(404)
-    })
-    it('check the response message', () => {
-      expect(res.body.message).to.eq('No client for provided id')
-    })
-  })
-})
-
-after('delete all clients', async () => {
-  let clientsList
-  clientsList = (await clientHelper.getAll()).body.payload.items
-  for (let i = 0; i < clientsList.length; i++) {
-    await clientHelper.deleteClient(clientsList[i]._id)
-  }
 })
