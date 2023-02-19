@@ -14,4 +14,9 @@ function  randomEmail(){
   return 'User_' + Date.now() + '@gmail.com'
 }
 
-export {login, register,  randomEmail}
+function emailSearch(email){
+  return supertest(process.env.BASE_URL)
+    .post(`/email/search`)
+    .send({ email })
+}
+export {login, register,  randomEmail, emailSearch}

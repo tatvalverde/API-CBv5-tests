@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --config .mocharc.js"
+    "test": "mocha --config .mocharc.js",
+    "pm-run": "newman run postman/ClientBasev5.postman_collection.json -e postman/ClientBaseV5.postman_environment.json",
+    "pm-report": "newman run postman/ClientBasev5.postman_collection.json -e postman/ClientBaseV5.postman_environment.json -r htmlextra --reporter-htmlextra-export Reports/pmReports.html"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,9 @@
   },
   "homepage": "https://github.com/TatianaNaumova5/API-CBv5-tests#readme",
   "dependencies": {
+    "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
+    "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
     "@babel/register": "^7.18.9",
     "chai": "^4.3.7",
