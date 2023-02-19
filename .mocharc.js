@@ -6,5 +6,4 @@ module.exports = {
   timeout: 20000,
   reporter: 'mochawesome',
   reporterOptions: ['json=false', 'reportFilename=MyReport', 'reportDir=Reports']
-
 }
