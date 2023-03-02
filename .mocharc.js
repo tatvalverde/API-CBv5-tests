@@ -1,5 +1,4 @@
 module.exports = {
-
   require: ['@babel/register'],
   spec: 'tests/**/*.js',
   ignore: 'tests/first.spec.js',
