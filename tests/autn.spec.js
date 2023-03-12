@@ -7,5 +7,9 @@ describe('Authentication positive', () => {
     before(async () => {
       res = await login(process.env.EMAIL, process.env.PASSWORD)
     })
+
+    it('Login with valid credentials', async () => {
+      expect(res.statusCode).to.eq(200)
+    })
   })
 })
