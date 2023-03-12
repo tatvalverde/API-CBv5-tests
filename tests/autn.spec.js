@@ -15,5 +15,10 @@ describe('Authentication positive', () => {
     it('Response has a correct message', async () => {
       expect(res.body.message).to.eq('Auth success')
     })
+
+    it('Response has a token', async () => {
+      expect(res.body.payload.token).to.be.a('string')
+    })
+
   })
 })
