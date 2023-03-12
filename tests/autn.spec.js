@@ -11,5 +11,9 @@ describe('Authentication positive', () => {
     it('Login with valid credentials', async () => {
       expect(res.statusCode).to.eq(200)
     })
+
+    it('Response has a correct message', async () => {
+      expect(res.body.message).to.eq('Auth success')
+    })
   })
 })
