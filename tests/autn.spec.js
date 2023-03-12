@@ -23,5 +23,10 @@ describe('Authentication positive', () => {
     it('Response has token', async () => {
       expect(res.body.payload.token).to.not.be.undefined
     })
+
+    it('Response body contains user id', async () => {
+      expect(res.body.payload.userId).to.be.a('string')
+    })
+
   })
 })
