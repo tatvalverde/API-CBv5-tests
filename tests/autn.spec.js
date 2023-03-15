@@ -28,5 +28,8 @@ describe('Authentication positive', () => {
       expect(res.body.payload.userId).to.be.a('string')
     })
 
+    it('Response does not contain password', async () => {
+      expect(res).to.not.have.property('password')
+    })
   })
 })
