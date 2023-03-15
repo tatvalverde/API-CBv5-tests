@@ -32,4 +32,16 @@ describe('Authentication positive', () => {
       expect(res).to.not.have.property('password')
     })
   })
+
+  describe('Authentication negative', () => {
+    describe('login with invalid credentials', () => {
+      let res
+
+      it('Login with invalid email', async () => {
+        res = await login('invalid@gmail.com', process.env.PASSWORD)
+        expect(res.statusCode).to.eq(400)
+      })
+    })
+  })
 })
+
