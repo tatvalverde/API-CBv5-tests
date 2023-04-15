@@ -37,6 +37,7 @@ describe('Authentication positive', () => {
     describe('login with invalid credentials', () => {
       let res
 
+
       it('Login with invalid email', async () => {
         res = await login('invalid@gmail.com', process.env.PASSWORD)
         expect(res.statusCode).to.eq(400)
